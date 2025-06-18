@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Електронний журнал відлучень з робочого місця">
+    <meta name="keywords" content="журнал, відлучення, робоче місце, облік, HR">
+    <meta name="author" content="Absence Journal App">
+    <title>Журнал відлучень з робочого місця</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <!-- Додаткові мета-теги для покращення SEO -->
+    <meta property="og:title" content="Журнал відлучень з робочого місця">
+    <meta property="og:description" content="Електронна система обліку відлучень співробітників">
+    <meta property="og:type" content="website">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Журнал відлучень з робочого місця</h1>
+            <p>Електронна система обліку відлучень співробітників</p>
+            <div class="form-section">
+                <h3>🔍 Пошук та керування</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="searchInput">Пошук записів</label>
+                        <input type="text" id="searchInput" placeholder="Введіть ПІБ, місце або номер..." onkeyup="searchRecords()">
+                    </div>
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                        <div class="button-group">
+                            <button type="button" class="btn btn-secondary" onclick="exportToCSV()">📊 Експорт CSV</button>
+                            <button type="button" class="btn btn-warning" onclick="clearAllData()">🗑️ Очистити все</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="form-section">
+                <h3>Реєстрація відлучення</h3>
+                <form id="absenceForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="lastName">Прізвище</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName">Ім'я</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="middleName">По батькові</label>
+                            <input type="text" id="middleName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="destination">Місце відлучення</label>
+                            <input type="text" id="destination" required placeholder="Наприклад: Банк, Лікарня, Пошта">
+                        </div>
+                        <div class="form-group">
+                            <label for="departureDateTime">Дата і час відлучення</label>
+                            <input type="datetime-local" id="departureDateTime" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">🚀 Зареєструвати відлучення</button>
+                </form>
+            </div>
+
+            <div class="form-section">
+                <h3>Реєстрація повернення</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="returnId">Унікальний номер</label>
+                        <input type="text" id="returnId" placeholder="Введіть номер для реєстрації повернення">
+                    </div>
+                    <div class="form-group">
+                        <label for="returnDateTime">Дата і час повернення</label>
+                        <input type="datetime-local" id="returnDateTime">
+                    </div>
+                </div>
+                <button type="button" class="btn btn-success" onclick="registerReturn()">✅ Зареєструвати повернення</button>
+            </div>
+        </div>
+
+        <div class="journal-table">
+            <table id="journalTable">
+                <thead>
+                    <tr>
+                        <th style="width: 120px;">№ за порядком</th>
+                        <th style="width: 200px;">ПІБ</th>
+                        <th style="width: 150px;">Місце відлучення</th>
+                        <th style="width: 140px;">Дата і час відлучення</th>
+                        <th style="width: 100px;">Підпис (відлучення)</th>
+                        <th style="width: 140px;">Дата і час повернення</th>
+                        <th style="width: 100px;">Підпис (повернення)</th>
+                        <th style="width: 80px;">Статус</th>
+                    </tr>
+                </thead>
+                <tbody id="journalBody">
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2025 Журнал відлучень. Створено з ❤️ для українських підприємств</p>
+            <p>
+                <a href="https://github.com/YOUR_USERNAME/absence-journal" target="_blank">
+                    📂 Вихідний код на GitHub
+                </a>
+                |
+                <a href="#" onclick="exportToCSV()">📊 Експорт даних</a>
+                |
+                <span>Версія 1.0.0</span>
+            </p>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
